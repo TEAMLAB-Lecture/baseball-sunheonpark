@@ -323,9 +323,11 @@ def main():
                     elif is_yes(one_more_input):
                         random_number = str(get_not_duplicated_three_digit_number())
                         print("Random Number is : ", random_number)
-                        break                        
+                        break
+                    else:
+                        print("Wrong Input, Input again")                    
         else:
-            print("WRONG INPUT, Input again")
+            print("Wrong Input, Input again")
             continue
     # ==================================
     print("Thank you for using this program")
