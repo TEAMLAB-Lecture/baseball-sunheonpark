@@ -280,6 +280,25 @@ def is_no(one_more_input):
     # ==================================
     return result
 
+def is_zero(input):
+    # '''
+    # Input:
+    #   - input : 문자열 값
+    #             입력된 값은 숫자형태의 문자열 값임이 보장된다.
+    # Output:
+    #   - input이 0일 경우는 True,
+    #     그렇지 않을 경우는 False
+    # '''
+    # ===Modify codes below=============
+    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
+    result = None
+    if input == "0":
+        result = True
+    else:
+        result = False
+    # ==================================
+    return result
+
 
 def main():
     print("Play Baseball")
@@ -290,19 +309,21 @@ def main():
     main_flag = True
     while main_flag:
         user_input = input("Input guess number : ")
+        if is_zero(user_input):
+            break
         if is_validated_number(user_input):
             results = get_strikes_or_ball(user_input, random_number)
             print(f"Strikes : {results[0]} , Balls : {results[1]}")
             if results[0] == 3:
                 while True:
                     one_more_input = input("You win, one more(Y/N) ?")
-                    if is_yes(one_more_input):
-                        random_number = str(get_not_duplicated_three_digit_number())
-                        print("Random Number is : ", random_number)
-                        break
-                    if is_no(one_more_input):
+                    if any([is_zero(one_more_input), is_no(one_more_input)]):
                         main_flag = False
                         break
+                    elif is_yes(one_more_input):
+                        random_number = str(get_not_duplicated_three_digit_number())
+                        print("Random Number is : ", random_number)
+                        break                        
         else:
             print("Wrong Input, Input again")
             continue
