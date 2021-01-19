@@ -325,7 +325,7 @@ def main():
                         print("Random Number is : ", random_number)
                         break                        
         else:
-            print("Wrong Input, Input again")
+            print("WRONG INPUT, Input again")
             continue
     # ==================================
     print("Thank you for using this program")
